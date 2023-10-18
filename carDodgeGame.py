@@ -23,13 +23,7 @@ for j in range(100,600,100):
 
 
 
-    def move_left(self, event):
-        if event.keysym == 'Left':
-            canvas.move(self.id, -100, 0)
-
-    def move_right(self, event):
-        if event.keysym == 'Right':
-            canvas.move(self.id,100, 0)
+        
     
 
 
@@ -40,7 +34,7 @@ canvas.bind_all('<KeyPress-Right>', player.move_right)
 
 # Create the Enemy instance
 enemies = []
-num_enemies = 8
+num_enemies = 7
 
 for i in range(num_enemies):
     enemies.append(Enemy(canvas, 'red'))
@@ -82,11 +76,16 @@ while not game_over:
             blank = canvas.create_rectangle(5, 0, 500, 50, fill='grey', outline='grey')
             show_score = canvas.create_text(40, 25, text=f'Score:{printed_score}', font=('Helvetica', 13), fill='white')
 
-        
 
+time.sleep(1)
 overbg = canvas.create_rectangle(0, 0, 500, 500, fill='black')
 over = canvas.create_text(250, 250, text='GAME OVER', font=('Helvetica', 30), fill='red')
 end_score = canvas.create_text(250, 300, text=f'Your score was {printed_score}', font=('Helvetica', 20), fill='white')
+image = PhotoImage(file='popo.png')
+
+
+
+
 
 
 tk.mainloop()
