@@ -34,7 +34,7 @@ canvas.bind_all('<KeyPress-Right>', player.move_right)
 
 # Create the Enemy instance
 enemies = []
-num_enemies = 7
+num_enemies = 5
 
 for i in range(num_enemies):
     enemies.append(Enemy(canvas, 'red'))
