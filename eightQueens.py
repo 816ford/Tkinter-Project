@@ -1,0 +1,69 @@
+import random
+
+def checkHorizontal(board, row):
+    if board[row].__contains__("Q"):
+        return False
+    return True
+
+def checkVertical(board, column):
+    for i in board:
+        if i[column] == "Q":
+            return False
+    return True
+
+def checkDiagonal(board, y, x):
+    permX = x
+    permY = y
+    while x <=6 and y<= 6:
+        x+=1
+        y+=1
+        if board[y][x] == "Q":
+            return False
+    x = permX
+    y = permY
+    while x <= 6 and y >= 1:
+        x+=1
+        y-=1
+        if board[y][x] == "Q":
+            return False
+    x = permX
+    y = permY
+    while x >= 1 and y >= 1:
+        x-=1
+        y-=1
+        if board[y][x] == "Q":
+            return False
+    x = permX
+    y = permY
+    while x >= 1 and y <= 6:
+        x-=1
+        y+=1
+        if board[y][x] == "Q":
+            return False
+    return True
+
+def resetBoard():
+    board = []
+    for i in range(8):
+        board.append(["-"]*8)
+    return(board)
+
+def find8queens():
+    queens = 0
+    board = resetBoard()
+    for i,v in enumerate(board):
+        totalChecks = []
+        while len(totalChecks) != 8:
+            j = random.randint(0,7)
+            while totalChecks.__contains__(j):
+                j = random.randint(0,7)
+            totalChecks.append(j)
+            if checkHorizontal(board, i) == True and checkVertical(board, j) == True and checkDiagonal(board, i, j)== True:
+                board[i][j] = "Q"
+                queens +=1
+    return(board)
+
+for i in find8queens():
+    for j in i:
+        print(j, end = ' ')
+    print()
